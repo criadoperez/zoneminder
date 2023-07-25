@@ -361,7 +361,7 @@ namespace jwt {
 		 *
 		 * \param certstr	String containing the certificate encoded as pem
 		 * \param pw		Password used to decrypt certificate (leave empty if not encrypted)
-		 * \param ec		error_code for error_detection (gets cleared if no error occures)
+		 * \param ec		error_code for error_detection (gets cleared if no error occurs)
 		 */
 		inline std::string extract_pubkey_from_cert(const std::string& certstr, const std::string& pw,
 													std::error_code& ec) {
@@ -429,7 +429,7 @@ namespace jwt {
 		 *
 		 * \param cert_base64_der_str 	String containing the certificate encoded as base64 DER
 		 * \param decode 				The function to decode the cert
-		 * \param ec					error_code for error_detection (gets cleared if no error occures)
+		 * \param ec					error_code for error_detection (gets cleared if no error occurs)
 		 */
 		template<typename Decode>
 		std::string convert_base64_der_to_pem(const std::string& cert_base64_der_str, Decode decode,
@@ -489,7 +489,7 @@ namespace jwt {
 		 * (here)[https://tools.ietf.org/html/rfc7517#section-4.7]
 		 *
 		 * \param cert_base64_der_str 	String containing the certificate encoded as base64 DER
-		 * \param ec					error_code for error_detection (gets cleared if no error occures)
+		 * \param ec					error_code for error_detection (gets cleared if no error occurs)
 		 */
 		inline std::string convert_base64_der_to_pem(const std::string& cert_base64_der_str, std::error_code& ec) {
 			auto decode = [](const std::string& token) {
@@ -521,7 +521,7 @@ namespace jwt {
 		 *
 		 * \param certstr	String containing the certificate encoded as pem
 		 * \param pw		Password used to decrypt certificate (leave empty if not encrypted)
-		 * \param ec		error_code for error_detection (gets cleared if no error occures)
+		 * \param ec		error_code for error_detection (gets cleared if no error occurs)
 		 */
 		inline std::shared_ptr<EVP_PKEY> load_public_key_from_string(const std::string& key,
 																	 const std::string& password, std::error_code& ec) {
@@ -580,7 +580,7 @@ namespace jwt {
 		 *
 		 * \param key		String containing a private key as pem
 		 * \param pw		Password used to decrypt key (leave empty if not encrypted)
-		 * \param ec		error_code for error_detection (gets cleared if no error occures)
+		 * \param ec		error_code for error_detection (gets cleared if no error occurs)
 		 */
 		inline std::shared_ptr<EVP_PKEY>
 		load_private_key_from_string(const std::string& key, const std::string& password, std::error_code& ec) {
@@ -1909,14 +1909,14 @@ namespace jwt {
 
 		/**
 		 * Serialize claim to output stream from wrapped JSON value
-		 * \return ouput stream
+		 * \return output stream
 		 */
 		std::ostream& operator<<(std::ostream& os) { return os << val; }
 
 		/**
 		 * Get type of contained JSON value
 		 * \return Type
-		 * \throw std::logic_error An internal error occured
+		 * \throw std::logic_error An internal error occurred
 		 */
 		json::type get_type() const { return json_traits::get_type(val); }
 
@@ -2013,7 +2013,7 @@ namespace jwt {
 			/**
 			 * \brief Parse a JSON string into a map of claims
 			 *
-			 * The implication is that a "map of claims" is identic to a JSON object
+			 * The implication is that a "map of claims" is identical to a JSON object
 			 *
 			 * \param str JSON data to be parse as an object
 			 * \return content as JSON object
@@ -2049,7 +2049,7 @@ namespace jwt {
 				static_assert(
 					details::is_valid_json_object<typename json_traits::value_type, typename json_traits::string_type,
 												  typename json_traits::object_type>::supports_claims_transform,
-					"currently there is a limitation on the internal implemantation of the `object_type` to have an "
+					"currently there is a limitation on the internal implementation of the `object_type` to have an "
 					"`std::pair` like `value_type`");
 
 				std::unordered_map<typename json_traits::string_type, basic_claim_t> res;
@@ -2192,7 +2192,7 @@ namespace jwt {
 	public:
 		using basic_claim_t = basic_claim<json_traits>;
 		/**
-		 * Check if algortihm is present ("alg")
+		 * Check if algorithm is present ("alg")
 		 * \return true if present, false otherwise
 		 */
 		bool has_algorithm() const noexcept { return has_header_claim("alg"); }
@@ -2262,7 +2262,7 @@ namespace jwt {
 	template<typename json_traits>
 	class decoded_jwt : public header<json_traits>, public payload<json_traits> {
 	protected:
-		/// Unmodifed token, as passed to constructor
+		/// Unmodified token, as passed to constructor
 		const typename json_traits::string_type token;
 		/// Header part decoded from base64
 		typename json_traits::string_type header;

@@ -57,7 +57,7 @@ This allows for complete freedom when picking which libraries you want to use. F
 
 In order to maintain compatibility, [picojson](https://github.com/kazuho/picojson) is still used to provide a specialized `jwt::claim` along with all helpers. Defining `JWT_DISABLE_PICOJSON` will remove this optional dependency.
 
-As for the base64 requirements of JWTs, this libary provides `base.h` with all the required implentation; However base64 implementations are very common, with varying degrees of performance. When providing your own base64 implementation, you can define `JWT_DISABLE_BASE64` to remove the jwt-cpp implementation.
+As for the base64 requirements of JWTs, this library provides `base.h` with all the required implentation; However base64 implementations are very common, with varying degrees of performance. When providing your own base64 implementation, you can define `JWT_DISABLE_BASE64` to remove the jwt-cpp implementation.
 
 ### Getting Started
 
@@ -129,7 +129,7 @@ struct my_favorite_json_library_traits {
     using object_type = json::object_t; // The "map type" string to value
     using array_type = json::array_t; // The "list type" array of values
     using string_type = std::string; // The "list of chars", must be a narrow char
-    using number_type = double; // The "percision type"
+    using number_type = double; // The "precision type"
     using integer_type = int64_t; // The "integral type"
     using boolean_type = bool; // The "boolean type"
 
